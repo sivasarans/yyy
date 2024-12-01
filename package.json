@@ -1,12 +1,30 @@
 {
   "name": "vamtec",
-  "version": "1.0.0",
+  "version": "1.2.0",
+  "description": "Vamtec is a simple utility to install Express dynamically and start a server quickly.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vamtec", "express", "dynamic-install", "server-starter", "npm-package", 
+    "express-server", "express-utility", "npm-automation", "dynamic-setup", 
+    "web-server", "nodejs", "server-manager", "npm-deploy", "express-tools", 
+    "auto-install", "express-helper", "npm-utility", "backend", "server", 
+    "installation-tool", "express-setup", "npm-package-tool", "utility-tool", 
+    "web", "express-manager", "express-scripts", "server-setup", "server-utility", 
+    "nodejs-tools", "nodejs-server", "express-auto", "automation-tool", 
+    "npm-scripts", "backend-tools", "expressjs", "install-dependency", 
+    "express-automation", "web-development", "developer-tools", 
+    "express-helper-package", "webserver-package", "server-starter-package", 
+    "dependency-manager", "npm-manager", "node-express", "express-server-package", 
+    "npm-deployment-tools", "express-startup", "nodejs-helper", "web-server-tools"
+  ],
+  "author": "Your Name",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.21.1",
+    "redis": "^4.7.0"
+  }
 }

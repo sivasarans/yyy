@@ -23,5 +23,5 @@ jobs:
 
       - name: Publish package
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.third }}
+          NODE_AUTH_TOKEN: ${{ secrets.vamtec }}
         run: npm publish
