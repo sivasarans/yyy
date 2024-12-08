@@ -3,6 +3,8 @@ const XLSX = require('xlsx');
 const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const { img } = require("./imgUploadModule"); // Import the image upload setup
+
 
 // Function to check if a package is installed
 function isPackageInstalled(packageName) {
@@ -166,6 +168,7 @@ module.exports = {
   generateExcel,
   generateCSV,
   generatePDF,
+  img,
 };
 
 // Run main function if this file is executed directly

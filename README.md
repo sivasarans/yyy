@@ -1,7 +1,3 @@
-Here's the updated **README** with the new instructions:
-
----
-
 # Vamtec
 
 Vamtec is a utility package designed to simplify and automate the process of managing commonly used file generation tasks in Node.js. It helps you quickly set up and generate Excel, CSV, and PDF files from JSON data. It also ensures that necessary dependencies like `xlsx`, `json2csv`, and `pdfkit` are installed automatically if missing.
@@ -11,6 +7,7 @@ Vamtec is a utility package designed to simplify and automate the process of man
 - Provides functions to generate Excel, CSV, and PDF files from JSON data.
 - Supports quick and seamless file generation for web applications or automation tasks.
 - Lightweight and easy to integrate into existing projects.
+- New **Image Upload Module** for handling file uploads in multiple ways (automatic folder creation and filename management).
 
 ## Installation
 ```bash
@@ -81,4 +78,50 @@ module.exports = router;
 
 ---
 
-This guide provides a simple way to integrate **Vamtec** into your project for file generation tasks like creating Excel, PDF, or CSV files from JSON data.
+## New Image Upload Module
+
+Vamtec now includes an image upload module for managing file uploads. This module allows flexible folder management and filename control for your file uploads.
+
+### Installation
+```bash
+npm install vamtec
+```
+
+### Image Upload Setup
+
+Here’s an example of how to use the image upload setup in your Express application:
+
+```javascript
+const express = require("express");
+const { imgSetup } = require("vamtec"); // Import the image upload setup
+
+const app = express();
+
+// Case 1: Upload with custom folder and filename configuration
+app.post("/upload", imgSetup({ folder: "uploads1", filename: "timestamp" }).single("image"), async (req, res) => {
+  if (!req.file) return res.status(400).send("No file uploaded");
+  res.json({ message: "File uploaded successfully", fileName: req.file.filename });
+});
+
+// Case 2: Upload with folder and filename array configuration
+app.post("/upload", imgSetup(["uploads2", "original"]).single("image"), async (req, res) => {
+  if (!req.file) return res.status(400).send("No file uploaded");
+  res.json({ message: "File uploaded successfully", fileName: req.file.filename });
+});
+
+// Case 3: Upload with folder, filename, and field name configuration
+app.post("/upload", imgSetup(["uploads3", "original", "image"]).single("image"), async (req, res) => {
+  if (!req.file) return res.status(400).send("No file uploaded");
+  res.json({ message: "File uploaded successfully", fileName: req.file.filename });
+});
+
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+```
+
+### How it Works:
+- **Case 1**: Uploads a file with a custom folder and filename format (`timestamp` for a timestamp-based filename).
+- **Case 2**: Uploads a file with the original filename in the specified folder.
+- **Case 3**: Uploads a file with a custom folder, filename, and field name (useful when you have multiple fields in your form).
+
+This module supports automatic creation of the upload folder if it doesn't exist.
+
