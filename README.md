@@ -93,24 +93,24 @@ Here’s an example of how to use the image upload setup in your Express applica
 
 ```javascript
 const express = require("express");
-const { imgSetup } = require("vamtec"); // Import the image upload setup
+const { img } = require("vamtec"); // Import the image upload setup
 
 const app = express();
 
 // Case 1: Upload with custom folder and filename configuration
-app.post("/upload", imgSetup({ folder: "uploads1", filename: "timestamp" }).single("image"), async (req, res) => {
+app.post("/upload", img({ folder: "uploads1", filename: "timestamp" }).single("image"), async (req, res) => {
   if (!req.file) return res.status(400).send("No file uploaded");
   res.json({ message: "File uploaded successfully", fileName: req.file.filename });
 });
 
 // Case 2: Upload with folder and filename array configuration
-app.post("/upload", imgSetup(["uploads2", "original"]).single("image"), async (req, res) => {
+app.post("/upload", img(["uploads2", "original"]).single("image"), async (req, res) => {
   if (!req.file) return res.status(400).send("No file uploaded");
   res.json({ message: "File uploaded successfully", fileName: req.file.filename });
 });
 
 // Case 3: Upload with folder, filename, and field name configuration
-app.post("/upload", imgSetup(["uploads3", "original", "image"]).single("image"), async (req, res) => {
+app.post("/upload", img(["uploads3", "original", "image"]).single("image"), async (req, res) => {
   if (!req.file) return res.status(400).send("No file uploaded");
   res.json({ message: "File uploaded successfully", fileName: req.file.filename });
 });

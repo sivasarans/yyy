@@ -1,6 +1,6 @@
 {
   "name": "vamtec",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Vamtec automates installation, file generation (PDF, Excel, CSV), and image uploads.",
   "main": "index.js",
   "scripts": {
