@@ -43,6 +43,47 @@ const router = express.Router();
 const vamtec = require('vamtec'); // Import the vamtec library
 const pool = require('../config/db'); // Database connection
 
+
+### Frontend: Reports.js
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import { DownloadFile } from 'vamtec-react';
+
+const App = () => {
+  const [fileFormat, setFileFormat] = useState("excel"); // Default to 'excel' without the dot
+
+  const handleDownload = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/download-leave-requests?format=${fileFormat}`, { responseType: 'blob' });
+      // Map 'excel', 'csv', 'pdf' to their respective extensions
+      const fileExtension = fileFormat === "excel" ? ".xlsx" : fileFormat === "csv" ? ".csv" : ".pdf";
+      // Call the fileHandling function with correct file name and extension
+      DownloadFile('Download', fileExtension, response.data); // Pass base filename, extension, and data
+    } catch (error) {
+      console.error('Error downloading file', error);
+    }
+  };
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-4">Download Leave Requests</h1>
+      <select value={fileFormat} onChange={(e) => setFileFormat(e.target.value)} className="p-2 border rounded-md w-full mb-4">
+        <option value="excel">Excel (.xlsx)</option>
+        <option value="csv">CSV (.csv)</option>
+        <option value="pdf">PDF (.pdf)</option>
+      </select>
+      <button onClick={handleDownload} className="bg-blue-500 text-white p-2 rounded mt-4">
+        Download Leave Requests
+      </button>
+    </div>
+  );
+};
+
+export default App;
+
+
+### Backend:server.js
 // Route to generate reports in different formats
 router.get('/', async (req, res) => {
   const format = req.query.format || 'excel'; // Default to 'excel' if format is not specified
