@@ -37,14 +37,10 @@ yes...
 
 Here’s an example of how to use all three functions (Excel, PDF, and CSV) in an Express route:
 
-```javascript
-const express = require('express');
-const router = express.Router();
-const vamtec = require('vamtec'); // Import the vamtec library
-const pool = require('../config/db'); // Database connection
 
 
 ### Frontend: Reports.js
+```javascript
 
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -81,9 +77,15 @@ const App = () => {
 };
 
 export default App;
-
-
+```
 ### Backend:server.js
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const vamtec = require('vamtec'); // Import the vamtec library
+const pool = require('../config/db'); // Database connection
+
 // Route to generate reports in different formats
 router.get('/', async (req, res) => {
   const format = req.query.format || 'excel'; // Default to 'excel' if format is not specified
