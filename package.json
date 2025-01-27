@@ -1,6 +1,6 @@
 {
   "name": "vamtec",
-  "version": "1.3.9",
+  "version": "1.3.10",
   "description": "Vamtec is a multi Purpose AI Assistant, ChatBot, file generation (PDF, Excel, CSV), image uploads handling and automation library",
   "main": "index.js",
   "scripts": {

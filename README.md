@@ -95,7 +95,7 @@ During a chat session, you can exit the chat by typing any of the following comm
 
 ### Class: `Bot`
 
-#### Constructor: `new Bot(apiKey, name)`
+#### Constructor: `new Bot(apiKey)`
 
 | Parameter | Type   | Default    | Description                                  |
 |-----------|--------|------------|----------------------------------------------|
