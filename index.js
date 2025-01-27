@@ -4,7 +4,7 @@ const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const { img } = require("./imgUploadModule"); // Import the image upload setup
-
+const { AI, Bot } = require("./Bot"); // Import the chatbot setup
 
 // Function to check if a package is installed
 function isPackageInstalled(packageName) {
@@ -171,6 +171,8 @@ module.exports = {
   generateCSV,
   generatePDF,
   img,
+  AI, 
+  Bot,
 };
 
 // Run main function if this file is executed directly

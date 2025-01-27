@@ -14,7 +14,157 @@ Vamtec is a utility package designed to simplify and automate the process of man
 npm install vamtec
 ```
 
+## 1. Usage ( AI BOT)
+
+```markdown
+# ChatAI Library
+
+Vamtec is a Node.js library that provides an easy-to-use interface to interact with generative AI models, enabling seamless text generation and chatbot functionality. It supports customizable chatbot names and intuitive chat sessions.
+
+---
+
+## Features
+
+- Simple and user-friendly API.
+- Text generation powered by the Gemini model.
+- Customizable chatbot names.
+- Supports multiple exit commands (`exit`, `Exit`, `stop`, `Esc`) for ending the chat.
+- Error handling for API requests.
+
+---
+
+## Installation
+
+To install the package, use npm:
+
+```bash
+npm install vamtec
+```
+
+---
+
 ## Usage
+
+### Importing the Library
+```javascript
+const { Bot } = require('vamtec');
+```
+
+### Example Code
+
+Here’s an example of how to use the `ChatAI` library:
+
+```javascript
+const { Bot } = require('vamtec');
+
+const apiKey = 'your_api_key_here'; // Replace with your actual API key
+const bot = new Bot(apiKey); // Default chatbot name is 'Chatbot'
+
+// Start a chat session
+bot.chat();
+```
+
+### Renaming the Chatbot
+
+You can rename the chatbot to a custom name before starting the chat session:
+
+```javascript
+const { Bot } = require('vamtec');
+
+const apiKey = 'your_api_key_here'; // Replace with your actual API key
+const bot = new Bot(apiKey); // Set a default name ( "ChatBot" ) during initialization
+
+// Rename the chatbot dynamically
+bot.rename('MyPersonalBot');
+
+// Start a chat session
+bot.chat();
+```
+
+### Supported Exit Commands
+
+During a chat session, you can exit the chat by typing any of the following commands:
+- `exit`
+- `Exit`
+- `stop`
+- `Esc`
+
+---
+
+## API Documentation
+
+### Class: `Bot`
+
+#### Constructor: `new Bot(apiKey, name)`
+
+| Parameter | Type   | Default    | Description                                  |
+|-----------|--------|------------|----------------------------------------------|
+| `apiKey`  | string | Required   | Your API key for the Gemini AI model.        |
+| `name`    | string | `'Chatbot'`| The name of the chatbot (optional).          |
+
+#### Method: `rename(newName)`
+
+| Parameter  | Type   | Description                                  |
+|------------|--------|----------------------------------------------|
+| `newName`  | string | The new name for the chatbot. Must be a non-empty string. |
+
+#### Method: `chat()`
+
+Starts an interactive chat session. Type messages, and the bot will respond based on the AI model.
+
+---
+
+## Error Handling
+
+If an API request fails, the error message will be displayed, such as:
+```plaintext
+Chatbot: Sorry, an error occurred: Error occurred while making API request: [error message]
+```
+
+---
+
+## Development
+
+To contribute or customize the package:
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the library in a local test environment.
+
+---
+
+
+## Example Output
+
+### Default Chat Session
+```plaintext
+Type one of [exit, Exit, stop, Esc] to end the chat.
+
+You: Hello
+Chatbot: Hi there! How can I assist you today?
+
+You: Tell me a joke.
+Chatbot: Why don't skeletons fight each other? Because they don't have the guts!
+
+You: exit
+Chatbot: Goodbye! 👋
+```
+
+### Renamed Chatbot
+```plaintext
+Type one of [exit, Exit, stop, Esc] to end the chat.
+
+You: Hi
+MyPersonalBot: Hello! How can I help you?
+
+You: What is the weather today?
+MyPersonalBot: I'm sorry, I can't provide weather updates. Is there anything else you'd like to know?
+
+You: stop
+MyPersonalBot: Goodbye! 👋
+```
 
 ### Automatically Install Dependencies and Load Modules
 
