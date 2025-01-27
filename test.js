@@ -4,7 +4,7 @@
 
 const { Bot } = require('./index');
 
-const apiKey = 'AIzaSyAAnCzdT2PiVH9Hg_CiYxztAQivqeD5toc';
+const apiKey = 'xxxx';
 const bot = new Bot(apiKey); // Default name is 'Chatbot'
 
 bot.chat(); // Supports exiting with 'exit', 'Exit', 'stop', or 'Esc'
